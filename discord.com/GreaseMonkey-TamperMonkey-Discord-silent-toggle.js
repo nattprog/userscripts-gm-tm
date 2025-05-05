@@ -75,6 +75,7 @@ function handleAddSilent() {
 
 async function toggleSilent(ev) {
   // self explanatory, toggles button style and boolSilent variable
+  ev.stopPropagation();
   let silentButton = ev.currentTarget;
   if (boolSilent) {
     silentButton.style.color = "";
