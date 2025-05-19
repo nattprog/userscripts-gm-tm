@@ -12,18 +12,20 @@ let savingLogs = "";
 let key = "signInKey";
 
 let logins = [
-  { name: "lorem", id: "1234IPSUM", password: "asdf" }, // triggered automatically by default
+  { name: "lorem", id: "1234IPSUM", password: "asdf" }, // First entry is triggered automatically by default
+  { name: "", id: "", password: "" }, // place another copy of your creds here, NOT intended for adding your friends's credentials here...
   { name: "", id: "", password: "" },
-  { name: "", id: "", password: "" },
-  { name: "", id: "", password: "" },
+  { name: "", id: "", password: "" }, // add as many copys of this object to the array, as needed. Again, only place your own creds for ease of use. This is not for adding your friends' ids and passwords.
 ];
 
+// main program
 (async () => {
   createBtns();
   await createLog();
   await signIn(logins[0]);
 })();
 
+// Selecting input fields and filling in values, then submitting.
 async function signIn(user) {
   try {
     document.querySelector("#N_QRCODE_DRV_USERID").value =
@@ -31,7 +33,7 @@ async function signIn(user) {
     document.querySelector("#N_QRCODE_DRV_PASSWORD").value = user.password;
     document.querySelector("#N_QRCODE_DRV_BUTTON1").click();
     try {
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(window.location.href); // saves link to your clipboard for ease of use.
     } catch {
       await log("Error: Unable to save link to clipboard.", true);
     }
@@ -44,6 +46,8 @@ async function signIn(user) {
   }
 }
 
+// Add message to log, with optional saving to local-storage.
+// Logs in storage are cleared every time script is rerun
 async function log(msg, saveToLocal = false) {
   try {
     let span = document.createElement("span");
@@ -60,6 +64,7 @@ async function log(msg, saveToLocal = false) {
   }
 }
 
+// Appends a div to display activity logs.
 async function createLog() {
   try {
     let div = document.createElement("div");
@@ -78,6 +83,7 @@ async function createLog() {
   savedLogs = "";
 }
 
+// Adds buttons to select (duplicate version of your own) login information.
 function createBtns() {
   try {
     let frag = document.createDocumentFragment();
@@ -101,6 +107,7 @@ function createBtns() {
   }
 }
 
+// Function to handle clicking on the button, to sign in.
 function handleSigninBtn(ev) {
   try {
     ev.preventDefault();
