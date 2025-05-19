@@ -109,7 +109,7 @@ function handleEmojie(ev) {
           output = "\n" + output;
         }
         dotNode.insertText(output);
-        textbox.dispatchEvent(new Event('input', { bubbles: true }));
+        textbox.dispatchEvent(new Event("input", { bubbles: true }));
       } catch (err) {
         console.log("Unable to insertText to textbox.");
         console.log(err);
@@ -120,7 +120,7 @@ function handleEmojie(ev) {
           output = "\n" + output;
         }
         textarea.value += output;
-        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        textarea.dispatchEvent(new Event("input", { bubbles: true }));
       } catch (err) {
         console.log("Unable to insert text to textarea.");
         console.log(err);
@@ -199,7 +199,7 @@ function handleSticker(ev) {
           output = "\n" + output;
         }
         dotNode.insertText(output);
-        textbox.dispatchEvent(new Event('input', { bubbles: true }));
+        textbox.dispatchEvent(new Event("input", { bubbles: true }));
       } catch (err) {
         console.log("Unable to insertText to textbox.");
         console.log(err);
@@ -210,7 +210,7 @@ function handleSticker(ev) {
           output = "\n" + output;
         }
         textarea.value += output;
-        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        textarea.dispatchEvent(new Event("input", { bubbles: true }));
       } catch (err) {
         console.log("Unable to insert text to textarea.");
         console.log(err);
